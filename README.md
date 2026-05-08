@@ -1,19 +1,19 @@
 # Holographic Fractal Context Navigation (HFCN)
 
 **Fluid Context Navigation (FCN)** is the human-intuitive umbrella concept.  
-**Holographic Fractal Context Navigation (HFCN)** is the formal technical modal system and core operating mode.
+**Holographic Fractal Context Navigation (HFCN)** is the formal technical modal system and core operating mode the AI internalizes.
 
-This architecture provides a minimal, precise, readable, and scalable way to manage dynamic, multi-layered context for advanced AI interactions. It emphasizes low cognitive load, keyword-first entry, fractal zooming, associative expansion, and holographic-style interactive simulation.
+This architecture provides a minimal, precise, readable, and scalable foundation for dynamic, multi-layered context management in advanced AI systems. It emphasizes low cognitive load, keyword-first entry, fractal self-similar zooming, associative context expansion, and support for vivid, interactive, reconstructive context handling while keeping instruction overhead low.
 
 ---
 
 ## Overview
 
-HFCN treats context not as a static window or simple retrieval set, but as a **living, navigable, self-similar space**. The system is designed around three core ideas:
+HFCN treats context as a living, navigable, self-similar space. The system is built around three core ideas:
 
-- **Minimal Semantic Structure** — Only three high-level categories to reduce cognitive load.
-- **Fractal Navigation** — Self-similar structures that support coherent zooming across scales.
-- **Holographic Simulation** — Vivid, interactive, reconstructive mental modeling of context (inspired by the Holographic Thinking cognitive framework).
+- **Minimal Semantic Structure** — Only three high-level categories to keep cognitive load low.
+- **Fractal Self-Similarity** — Consistent structures that support coherent zooming and expansion across scales.
+- **Holographic Qualities** — Support for vivid, interactive, and reconstructive handling of context.
 
 The architecture prioritizes:
 - Human and AI readability
@@ -97,15 +97,15 @@ Each level can contain:
 
 ## The index.yaml File
 
-`index.yaml` is intentionally minimal. It serves as the AI’s primary interface when operating in HFCN mode.
+`index.yaml` is deliberately minimal and serves as the primary AI navigation surface and control panel when operating in HFCN mode. It contains only lightweight, high-signal data relevant to navigation and operations:
 
 **Core sections**:
-- `current_state` — Focus, active keywords, current zoom level
-- `navigation_index` — Lightweight pointers into the three core categories with primary entry points
-- `available_operations` — High-level functions the AI can call
-- `holographic_guidance` — Short reminders to maintain the desired simulation mindset
+- `current_state` — Current focus, active keywords, and zoom level
+- `navigation_index` — Lightweight pointers and primary entry points into the three core categories
+- `available_operations` — The small set of high-level functions the AI can invoke
+- Short guidance to maintain consistent HFCN behavior
 
-The file avoids heavy content. Detailed data is loaded on demand through navigation operations.
+Heavy content and detailed structures live in the fractal directory tree and are loaded on demand. This design keeps token usage and cognitive load low for the AI.
 
 ---
 
@@ -125,11 +125,10 @@ These operations are designed to be invoked with minimal prompting once the mode
 
 ## Holographic and Fractal Properties
 
-**Holographic** (drawing from the Holographic Thinking framework):
-- Vivid, multi-sensory mental simulation of context
-- Operative interactivity (manipulate, test, detect faults)
-- Reconstructive capabilities (context can be rebuilt from partial cues)
-- Dynamic evolution and emergent behavior detection
+**Holographic qualities**:
+- Support for vivid, interactive simulation of context slices
+- Reconstructive capabilities from partial cues
+- Interactive manipulation and emergent behavior detection within context
 
 **Fractal**:
 - Self-similar structure at every scale
