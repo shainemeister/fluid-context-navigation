@@ -170,6 +170,82 @@ Together these properties enable context that feels alive, navigable, and resili
 
 ---
 
+## Reference Implementation: Low-Friction Python + Ollama Starter
+
+A complete, working reference implementation exists that turns the HFCN concepts into a practical, everyday system while staying true to the core philosophy of **radical simplicity and minimal overhead**.
+
+### Why This Approach
+Big labs move fast on scale and features. The efficient path for an individual or small team is to build something **you can actually use and iterate on today** with very low friction. This starter proves the architecture works beautifully with current local and flagship models without unnecessary complexity.
+
+### Core Technologies
+- **Python + Ollama** as the AI backbone (excellent with local models; easy to point at stronger OpenAI-compatible endpoints later)
+- Pure file-based storage (YAML for `index.yaml`, Markdown for content)
+- No heavy agent frameworks, no vector database required initially
+
+### How It Realizes the Vision
+
+**Pre-text (automatic lens widening):**  
+Before every model call, a lightweight `context_builder` walks the three fractal categories using keyword matching on paths and content. Relevant excerpts are injected into the prompt as "Relevant HFCN Context". The model receives rich, targeted context with almost no wasted tokens.
+
+**Post-text (operation execution):**  
+The model can output clean `TOOL_CALL: operation_name(arg="value")` lines. The framework parses and executes them (`navigate`, `expand_fractal`, `holographic_simulate`, `cross_reference`, `update_index`), then feeds the result back naturally.
+
+**Natural conversational feel:**  
+A single powerful system prompt loads the entire `index.yaml` + HFCN philosophy + operation format at startup. The model behaves like Grok, ChatGPT, or Gemini with continuously rolling context and almost no extra instructions needed from the user.
+
+**Temporal Memory as living chat log:**  
+All conversations are automatically stored as sharded files using fine-grained timestamps (`temporal_memory/YYYY/MM/DD/202605072038_user.md`, `202605072045_assistant.md`, etc.). This makes `temporal_memory` both the complete historical record *and* the active, navigable context source.
+
+**index.yaml as the control panel:**  
+The lightweight `index.yaml` (with `current_state`, `navigation_index`, `available_operations`, and `holographic_guidance`) is loaded once in the system prompt. The AI always has the full navigation surface available.
+
+### Recommended Directory Layout (Sharded Temporal Memory)
+
+```
+data/
+├── index.yaml
+├── temporal_memory/
+│   ├── 2026/
+│   │   ├── 05/
+│   │   └── 07/
+│   │       ├── 202605072038_user.md
+│   │       ├── 202605072045_assistant.md
+│   │       └── ...
+├── categorical_frame/
+│   ├── goals/
+│   ├── constraints/
+│   ├── knowledge/
+│   └── actions_threads/
+└── associative_nexus/
+    ├── clusters/
+    └── long_range_links/
+```
+
+### Key Modules (Minimal & Understandable)
+
+- `chat.py` — Natural CLI chat loop (primary interface)
+- `hfcn/prompts.py` — Builds the powerful upfront system prompt
+- `hfcn/context_builder.py` — The fractal "lens widener" (core navigation logic)
+- `hfcn/index_manager.py` — Load/save/update `index.yaml`
+- `hfcn/operations.py` — Minimal implementations of the five core operations
+- `hfcn/config.py` — Easy configuration (model, data root)
+
+### Philosophy
+Simplification increases efficiency and speed. Keyword-first + associative directory walking replaces complex retrieval systems while remaining fully human-inspectable and editable. The model does what it does best (natural reasoning). The thin Python layer handles structure, state, and context assembly.
+
+### Getting Started
+1. Clone or copy the `hfcn-starter/` structure.
+2. Run `ollama serve` and pull a model (llama3.2, qwen2.5, phi4, etc. work great).
+3. `python chat.py`
+4. Drop your real project files into the three category folders.
+5. The system automatically enriches context and keeps `temporal_memory` up to date.
+
+This starter can be used directly for personal/agent use, extended with a WebUI (FastAPI/Gradio), or used as a blueprint for more advanced versions.
+
+---
+
 **This architecture represents a deliberate move toward minimal, precise, and cognitively aligned context systems that support both human understanding and advanced AI operation.**
 
-For questions or contributions, refer to the ongoing development of Fluid Context Navigation and Holographic Fractal Context Navigation.
+A practical, low-friction reference implementation is available so you can start using and evolving HFCN immediately rather than waiting for perfect infrastructure.
+
+For questions, contributions, or to explore the reference implementation, refer to the ongoing development of Fluid Context Navigation and Holographic Fractal Context Navigation.
