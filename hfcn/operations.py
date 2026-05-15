@@ -61,9 +61,18 @@ def holographic_simulate(slice_id: str, scenario: str) -> str:
     from pathlib import Path
     from .config import DATA_ROOT
 
-    slice_path = DATA_ROOT / slice_id
-    if not slice_path.exists():
-        matches = list(DATA_ROOT.rglob(slice_id))
+    root = DATA_ROOT.resolve()
+
+    # Direct candidate (supports full relative paths like "categorical_frame/goals/...")
+    candidate = (DATA_ROOT / slice_id).resolve()
+    if candidate.is_relative_to(root) and candidate.exists():
+        slice_path = candidate
+    else:
+        # Safe rglob fallback: only by basename, never traverse out
+        name = Path(slice_id).name
+        if not name or name in {".", ".."}:
+            return f"Slice '{slice_id}' not found."
+        matches = [m for m in DATA_ROOT.rglob(name) if m.resolve().is_relative_to(root)]
         if matches:
             slice_path = matches[0]
         else:
@@ -88,6 +97,8 @@ def cross_reference(source: str, target: str) -> str:
     idx = load_index()
     links = idx.setdefault("index", {}).setdefault("associative_links", [])
     links.append({"source": source, "target": target})
+    if len(links) > 50:
+        del links[:-50]  # small cap to prevent index bloat
     save_index(idx)
 
     return (

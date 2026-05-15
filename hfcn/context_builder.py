@@ -22,7 +22,7 @@ from typing import List, Dict, Any
 
 import yaml
 
-from .config import DATA_ROOT
+from . import config
 
 
 def build_relevant_context(
@@ -57,7 +57,7 @@ def build_relevant_context(
     categories = ["temporal_memory", "categorical_frame", "associative_nexus"]
 
     for category in categories:
-        cat_path = DATA_ROOT / category
+        cat_path = config.DATA_ROOT / category
         if cat_path.exists():
             _collect_relevant_files(cat_path, keywords, relevant, max_depth=depth)
 
@@ -88,6 +88,14 @@ def _collect_relevant_files(
         return
 
     for item in base_path.iterdir():
+        # Symlink escape guard
+        # Intent: identical safety pattern to holographic_simulate (resolve + is_relative_to root). Prevents symlink traversal out of DATA_ROOT.
+        try:
+            if not item.resolve().is_relative_to(config.DATA_ROOT.resolve()):
+                continue
+        except Exception:
+            continue
+
         if item.is_dir():
             _collect_relevant_files(item, keywords, results, max_depth, current_depth + 1)
             continue
@@ -96,24 +104,26 @@ def _collect_relevant_files(
             continue
 
         score = 0
-        path_str = str(item.relative_to(DATA_ROOT)).lower()
+        path_str = str(item.relative_to(config.DATA_ROOT)).lower()
 
         for kw in keywords:
             if kw in path_str:
                 score += 3
 
+        file_content = ""
         try:
-            content = item.read_text(encoding="utf-8", errors="ignore")[:2000].lower()
+            file_content = item.read_text(encoding="utf-8", errors="ignore")[:2000]
+            lowered = file_content.lower()
             for kw in keywords:
-                if kw in content:
+                if kw in lowered:
                     score += 2
         except Exception:
             pass
 
         if score > 0:
-            excerpt = content[:600].strip().replace("\n", " ") if 'content' in locals() else ""
+            excerpt = file_content[:600].strip().replace("\n", " ")
             results.append({
-                "path": str(item.relative_to(DATA_ROOT)),
+                "path": str(item.relative_to(config.DATA_ROOT)),
                 "score": score,
                 "excerpt": excerpt
             })

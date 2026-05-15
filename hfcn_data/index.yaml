@@ -1,46 +1,82 @@
 index:
   version: 3.1
-  last_updated: "2026-05-08T19:50:00Z"
-  mode: "Holographic Fractal Context Navigation"
-
+  last_updated: '2026-05-15T03:10:00Z'
+  platform_status: Core platform (hfcn chat + init + full pre/post-text host loop
+    + Ollama) implemented and runnable. Critical security (path traversal in holographic_simulate)
+    + quality (excerpt casing) fixes applied from multi-agent audits. coder + tester
+    swarm now hardening parser, --data support, tests, and remaining issues. 5 domain
+    skills + real scenario active.
+  mode: Holographic Fractal Context Navigation
   current_state:
-    focus: "project_alpha_q3_planning"
-    active_keywords: ["resource_tension", "timeline_risk"]
-    current_zoom: "standard"
-    active_category: "Categorical_Frame"
-
+    focus: test_focus
+    active_keywords:
+    - resource_tension
+    - timeline_risk
+    current_zoom: standard
+    active_category: Categorical_Frame
   navigation_index:
     Temporal_Memory:
-      summary: "Chronological backbone and raw source material. All prior conversations and events are stored here as timestamped shards."
+      summary: Chronological backbone and raw source material. All prior conversations
+        and events are stored here as timestamped shards.
       primary_entry_points:
-        - path: "temporal_memory/2026/"
-          keywords: ["q3", "planning", "review", "2026"]
-        - path: "temporal_memory/2026/05/07/"
-          keywords: ["may 7", "recent"]
-
+      - path: temporal_memory/2026/
+        keywords:
+        - q3
+        - planning
+        - review
+        - '2026'
+      - path: temporal_memory/2026/05/07/
+        keywords:
+        - may 7
+        - recent
     Categorical_Frame:
-      summary: "Self-similar semantic and psychological categories. Goals, constraints, knowledge, and action threads."
+      summary: Self-similar semantic and psychological categories. Goals, constraints,
+        knowledge, and action threads.
       primary_entry_points:
-        - path: "categorical_frame/goals/"
-          keywords: ["revenue", "success_criteria", "project_alpha"]
-        - path: "categorical_frame/constraints/"
-          keywords: ["technical_debt", "resource_limits", "timeline"]
-
+      - path: categorical_frame/goals/
+        keywords:
+        - revenue
+        - success_criteria
+        - project_alpha
+      - path: categorical_frame/constraints/
+        keywords:
+        - technical_debt
+        - resource_limits
+        - timeline
     Associative_Nexus:
-      summary: "Relational and holographic binding layer. Clusters and long-range links between concepts."
+      summary: Relational and holographic binding layer. Clusters and long-range links
+        between concepts.
       primary_entry_points:
-        - path: "associative_nexus/clusters/"
-          keywords: ["planning_tension", "dependencies", "resource"]
-
+      - path: associative_nexus/clusters/
+        keywords:
+        - planning_tension
+        - dependencies
+        - resource
   available_operations:
-    - navigate(cue, zoom, depth)
-    - expand_fractal(cue, max_branches)
-    - holographic_simulate(slice_id, scenario)
-    - cross_reference(source, target)
-    - update_index(changes)
-
+  - navigate(cue, zoom, depth)
+  - expand_fractal(cue, max_branches)
+  - holographic_simulate(slice_id, scenario)
+  - cross_reference(source, target)
+  - update_index(changes)
   holographic_guidance:
-    - "Treat context as vivid, interactive simulation"
-    - "Zoom fractally while preserving coherence"
-    - "Expand from keywords associatively"
-    - "Use pre-text context enrichment and post-text operations naturally"
+  - Treat context as vivid, interactive simulation
+  - Zoom fractally while preserving coherence
+  - Expand from keywords associatively
+  - Use pre-text context enrichment and post-text operations naturally
+  associative_links:
+  - source: alpha
+    target: beta
+  - source: alpha
+    target: beta
+  - source: alpha
+    target: beta
+  - source: alpha
+    target: beta
+  - source: alpha
+    target: beta
+  - source: alpha
+    target: beta
+  - source: alpha
+    target: beta
+  - source: alpha
+    target: beta
