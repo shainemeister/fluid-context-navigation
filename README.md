@@ -153,29 +153,97 @@ fluid-context-navigation/
 
 ---
 
-## Getting Started
+## The HFCN Platform (Recommended)
+
+The original reference implementation has been evolved — through a dedicated team of specialized AI agents — into a complete, runnable, and self-improving platform while preserving every principle of **radical simplicity**, **fractal self-similarity**, and **low cognitive overhead**.
+
+### Quick Start
+
+```bash
+# Install the platform in development mode
+pip install -e .
+
+# Create a brand new, correctly structured HFCN workspace
+hfcn init my-research-project
+
+# Start an interactive session with any local Ollama model
+hfcn chat --model qwen2.5:7b --data ./my-research-project
+```
+
+Inside the chat the model can fluidly navigate context using the five core operations:
+
+```
+TOOL_CALL: navigate(cue="resource_tension", zoom="deep")
+TOOL_CALL: expand_fractal(cue="planning_tension", max_branches=6)
+TOOL_CALL: holographic_simulate(slice_id="project_alpha_q3_planning.md", scenario="board presentation")
+```
+
+The host automatically:
+- Injects the full `index.yaml` + relevant context (pre-text)
+- Parses and safely executes `TOOL_CALL` lines (post-text)
+- Auto-logs every turn into `temporal_memory/`
+- Keeps the entire experience natural and conversational
+
+### Multi-Agent Collaboration System
+
+This repository ships with a powerful multi-agent skill platform located in `.grok/skills/`:
+
+| Skill                | Role                                      | When to Use |
+|----------------------|-------------------------------------------|-------------|
+| `/coding-audit`      | Philosophy enforcer (simplicity, fractal structure, Intent comments) | Code quality & design reviews |
+| `/security-audit`    | Threat modeling for LLM-driven file operations & TOOL_CALL surfaces | Security reviews |
+| `/coding-expert`     | Deep HFCN architect and final decision authority | Architectural guidance |
+| `/coder`             | Minimal, high-fidelity implementation     | Writing new features |
+| `/tester`            | Contract + security regression testing (31 tests, all green) | Verification |
+
+These agents were used **to build the platform itself** following the mission documented in [`.grok/skills/hfcn-platform-scenario.md`](.grok/skills/hfcn-platform-scenario.md).
+
+You can invoke them directly in this environment or spawn them as sub-agents for parallel work.
+
+### Running Tests
+
+```bash
+python3 -m pytest -q
+# 31 passed
+```
+
+The test suite includes high-signal contract tests, security property tests (path traversal, symlink escapes, TOOL_CALL injection), and mocked end-to-end host loop verification.
+
+### Using the Original Reference Library
+
+If you prefer to build your own host or integrate HFCN into another system:
 
 1. Clone this repository.
-2. Ensure Ollama is running and pull a model (e.g. `qwen2.5:7b`, `llama3.2`, `phi4`).
-3. Explore `hfcn_data/` to see the structure in action.
-4. Use the modules in `hfcn/` as a foundation for your own implementation or chat interface.
-5. Extend with a CLI, WebUI, or API as needed.
+2. Ensure Ollama is running and pull a model.
+3. Explore `hfcn_data/` to see the fractal structure.
+4. Import modules from `hfcn/` (`prompts.py`, `context_builder.py`, `operations.py`, etc.).
+5. Implement your own pre-text / post-text loop following the patterns in `cli.py`.
 
-The implementation is designed to work immediately with local models while remaining easy to scale to stronger ones.
+The reference library remains extremely clean and well-documented for this purpose.
 
 ---
 
 ## Future Directions
 
-- Richer tool integration for the core operations
-- Training protocols to accelerate HFCN mode internalization
-- User-facing visualizations of the fractal structure
-- Integration with external memory systems
+- Self-improvement of the platform through the built-in multi-agent system (`/coder`, `/tester`, `/coding-audit`, etc.)
+- Richer tool integration and external memory backends while staying minimal
+- Training protocols and prompt packs to help models internalize HFCN mode faster
+- Visualizations of the live fractal context space
+- Packaging and distribution as a proper Python package on PyPI
 
 ---
 
-**This architecture represents a deliberate move toward minimal, precise, and cognitively aligned context systems.**
+**This architecture represents a deliberate move toward minimal, precise, and cognitively aligned context systems — now with a complete, agent-driven platform on top.**
 
-A practical reference implementation with real files and well-documented code is available in this repository so you can start using and evolving HFCN immediately.
+The combination of the elegant reference library + the multi-agent collaboration skills + the runnable `hfcn` host gives you both a powerful tool *and* the means to continue evolving it while strictly preserving the original philosophy.
 
-For questions or contributions, refer to the ongoing development of Fluid Context Navigation and Holographic Fractal Context Navigation.
+Start with:
+
+```bash
+hfcn init my-project
+hfcn chat --model qwen2.5:7b
+```
+
+Then bring in the agents with `/coding-expert`, `/coder`, or `/security-audit` whenever you want to extend or harden the system.
+
+For questions or contributions, refer to the ongoing development of Fluid Context Navigation and Holographic Fractal Context Navigation — now actively maintained by both humans and specialized AI agents.
